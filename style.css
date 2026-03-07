@@ -1,0 +1,509 @@
+@font-face {
+    font-family: 'Splat';
+    src: url('フォント/BlitzMain.otf');
+}
+
+:root {
+    --yellow: #eaff00;
+    --blue: #00ffff;
+    --pink: #ff007f;
+    --orange: #ff4400;
+    --purple: #bf00ff;
+    --splat-black: #1a1a1a;
+    --splat-red: #ff4444;
+}
+
+* {
+    font-family: 'Splat', sans-serif;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    background: #000;
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 430px;
+    height: 100%;
+    position: relative;
+    background: url('スプラ画像/アイコン/背景画像.png') center / cover;
+    display: flex;
+    flex-direction: column;
+    
+    padding-top: 40px; 
+}
+
+.view {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 12px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ヘッダー */
+.main-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.logo-title {
+    font-size: 1.1rem;
+    background: var(--splat-black);
+    color: #fff;
+    padding: 4px 12px;
+    border: 3px solid var(--yellow);
+    transform: rotate(-1.2deg);
+    margin: 5px 0 10px 0;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+.admin-nav-container {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.admin-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 6px;
+    border-radius: 10px;
+    border: 2px solid var(--yellow);
+    flex: 1;
+    box-shadow: 0 4px 0 #000;
+    cursor: pointer;
+    height: 45px;
+}
+
+.admin-icon-box img {
+    width: 24px;
+    margin-right: 5px;
+    padding-top:5px
+}
+
+.admin-text {
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* カード表示 */
+.weapon-display-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 4px solid var(--splat-black);
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 200px;
+}
+
+.gear-card-style {
+    width: 100%;
+    min-height: 140px;
+    padding: 8px;
+}
+
+.weapon-img-wrap {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weapon-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.hatena-box {
+    font-size: 3rem;
+    color: #ccc;
+}
+
+.weapon-name-tag {
+    background: var(--splat-black);
+    color: var(--yellow);
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 1.3rem;
+    min-height: 38px;
+}
+
+/* ギアレイアウト */
+.gear-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    margin: 8px 0;
+}
+
+.gear-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gear-label {
+    font-size: 0.8rem;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    border: 2px solid #000;
+    margin-bottom: 4px;
+    padding: 2px 0;
+    font-weight: bold;
+    clip-path: polygon(7% 0%, 100% 0%, 93% 100%, 0% 100%);
+    position: relative;
+    z-index: 2;
+}
+
+.gear-group:nth-child(1) .gear-label {
+    transform: rotate(-4deg);
+    background: var(--pink);
+}
+
+.gear-group:nth-child(2) .gear-label {
+    transform: rotate(2deg);
+    background: var(--orange);
+}
+
+.gear-group:nth-child(3) .gear-label {
+    transform: rotate(-2deg);
+    background: var(--purple);
+}
+
+.gear-power-frame {
+    background: #fff;
+    width: 60px;
+    aspect-ratio: 1/1;
+    border: 3px solid #000;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.gear-power-frame img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+}
+
+.gear-name-text {
+    background: var(--splat-black);
+    color: #fff;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 6px;
+    border-radius: 6px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* 発光アニメーション */
+@keyframes flash-yellow {
+    0% {
+        border-color: #000;
+        box-shadow: 0 0 0 transparent;
+    }
+
+    50% {
+        border-color: var(--yellow);
+        box-shadow: 0 0 20px var(--yellow);
+    }
+
+    100% {
+        border-color: #000;
+        box-shadow: 0 0 0 transparent;
+    }
+}
+
+.flash-weapon {
+    animation: flash-yellow 0.6s ease-out;
+}
+
+/* --- ボタン類 --- */
+.btn-spin {
+    width: 100%;
+    height: 65px;
+    background: var(--blue);
+    border: 4px solid #000;
+    border-radius: 18px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    box-shadow: 0 6px 0 #007777;
+    cursor: pointer;
+}
+
+.single-spin-btn {
+    margin-top: 6px;
+    padding: 4px 0;
+    font-size: 1rem;
+    border: 2px solid #000;
+    border-radius: 8px;
+    box-shadow: 0 3px 0 #000;
+    background: var(--blue);
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.weapon-spin {
+    background: var(--yellow);
+}
+
+.btn-history,
+.btn-master-reset,
+.btn-history-reset,
+.confirm-btn-no,
+.confirm-btn-yes,
+.return-btn {
+    border: 3px solid #000;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+}
+
+/* 個別色・シャドウ */
+.btn-history {
+    background: #eee;
+    box-shadow: 0 4px 0 #999;
+    flex: 1;
+}
+
+.btn-master-reset {
+    background: var(--splat-red);
+    color: #fff;
+    box-shadow: 0 4px 0 #900;
+    flex: 1;
+}
+
+.btn-history-reset {
+    background: var(--splat-red);
+    color: #fff;
+    box-shadow: 0 4px 0 #900;
+    width: 80%;
+}
+
+.confirm-btn-no {
+    background: #eee;
+    box-shadow: 0 4px 0 #999;
+    flex: 1;
+}
+
+.confirm-btn-yes {
+    background: var(--splat-red);
+    color: #fff;
+    box-shadow: 0 4px 0 #900;
+    flex: 1;
+}
+
+.return-btn {
+    background: var(--pink);
+    color: #fff;
+    padding: 6px 15px;
+    box-shadow: 0 3px 0 #900;
+}
+
+/* 共通演出 */
+.is-pressed {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 transparent !important;
+}
+
+.btn-spin.is-pressed {
+    transform: translateY(6px);
+}
+
+/* スピン中 */
+.is-spinning-active {
+    background: #555 !important;
+    color: #888 !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+}
+
+.spinning {
+    transform: scale(0.97);
+    opacity: 0.8;
+}
+
+/* モーダル背景 */
+.modal-bg {
+    background: #f5f5f5;
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 4px solid #000;
+    background: #fff;
+    gap: 10px;
+}
+
+.batch-controls {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    background: #ddd;
+    border-bottom: 2px solid #000;
+}
+
+.batch-btn {
+    flex: 1;
+    padding: 8px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #666;
+}
+
+.batch-btn.on {
+    background: var(--yellow) !important;
+    color: #000 !important;
+}
+
+/* 履歴 & 初期化モーダル */
+.history-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.history-footer {
+    padding: 15px;
+    border-top: 2px solid #000;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-card {
+    background: #fff;
+    border: 5px solid #000;
+    border-radius: 20px;
+    padding: 20px;
+    width: 85%;
+    transform: rotate(-1deg);
+    text-align: center;
+}
+
+.confirm-message {
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.confirm-btns {
+    display: flex;
+    gap: 10px;
+}
+
+/* その他リスト */
+.type-grid,
+.weapon-scroll-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.list-item {
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.list-item img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+/* 履歴カード */
+.history-card {
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.history-thumb {
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.history-thumb img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.history-thumb-name {
+    font-size: 0.5rem;
+    text-align: center;
+    margin-top: 2px;
+    line-height: 1;
+}

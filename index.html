@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>スプラ ランダム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <div id="view-main" class="view">
+            <header class="main-header">
+                <h1 class="logo-title">スプラ３ RANDOM</h1>
+                <div class="admin-nav-container">
+                    <div class="admin-nav-item" id="start-setup">
+                        <div class="admin-icon-box"><img src="スプラ画像/アイコン/ブキアイコン.png"></div>
+                        <span class="admin-text">ブキ管理</span>
+                    </div>
+                    <div class="admin-nav-item" id="start-gear-setup">
+                        <div class="admin-icon-box"><img src="スプラ画像/アイコン/ギアアイコン.png"></div>
+                        <span class="admin-text">ギア管理</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="result-area">
+                <div class="weapon-display-card" id="card-weapon">
+                    <div id="res-img" class="weapon-img-wrap">
+                        <div class="hatena-box">?</div>
+                    </div>
+                    <div id="res-name" class="weapon-name-tag">READY?</div>
+                    <button class="single-spin-btn weapon-spin" id="spin-weapon">SPIN</button>
+                </div>
+
+                <div class="gear-container">
+                    <div class="gear-group">
+                        <div class="gear-label">アタマ</div>
+                        <div id="gear-head" class="weapon-display-card gear-card-style">
+                            <div class="gear-power-frame">?</div>
+                            <div class="gear-name-text">???</div>
+                            <button class="single-spin-btn gear-spin" id="spin-head">SPIN</button>
+                        </div>
+                    </div>
+                    <div class="gear-group">
+                        <div class="gear-label">フク</div>
+                        <div id="gear-clothes" class="weapon-display-card gear-card-style">
+                            <div class="gear-power-frame">?</div>
+                            <div class="gear-name-text">???</div>
+                            <button class="single-spin-btn gear-spin" id="spin-clothes">SPIN</button>
+                        </div>
+                    </div>
+                    <div class="gear-group">
+                        <div class="gear-label">クツ</div>
+                        <div id="gear-shoes" class="weapon-display-card gear-card-style">
+                            <div class="gear-power-frame">?</div>
+                            <div class="gear-name-text">???</div>
+                            <button class="single-spin-btn gear-spin" id="spin-shoes">SPIN</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="main-footer">
+                <div class="footer-stack">
+                    <button id="spin-btn" class="btn-spin">ALL SPIN!</button>
+                    <div class="history-trigger-row" style="padding-top:10px">
+                        <button id="master-reset" class="btn-master-reset">初期化</button>
+                        <button id="open-history" class="btn-history">りれき</button>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <div id="view-history" class="view modal-bg hidden">
+            <div class="modal-header">
+                <button id="history-to-main" class="return-btn">もどる</button>
+                <span style="font-weight:bold;">りれき</span>
+            </div>
+            <div id="history-list" class="history-list"></div>
+            <div class="history-footer">
+                <button id="history-reset" class="btn-history-reset">りれきをリセット</button>
+            </div>
+        </div>
+
+        <div id="confirm-modal" class="overlay hidden">
+            <div class="confirm-card">
+                <div class="confirm-message">セーブデータを消去して<br>初期状態にもどしますか？</div>
+                <div class="confirm-btns">
+                    <button id="confirm-cancel" class="confirm-btn-no">やめる</button>
+                    <button id="confirm-ok" class="confirm-btn-yes">初期化する</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-type-select" class="view hidden modal-bg">
+            <div class="modal-header">
+                <button class="return-btn" id="to-main">← もどる</button>
+                <h2 class="modal-title">ブキ種選択</h2>
+            </div>
+            <div class="batch-controls">
+                <button id="cat-all-on" class="batch-btn on">すべてON</button>
+                <button id="cat-all-off" class="batch-btn off">すべてOFF</button>
+            </div>
+            <div class="type-grid" id="type-grid"></div>
+        </div>
+
+        <div id="view-weapon-config" class="view hidden modal-bg">
+            <div class="modal-header">
+                <button class="return-btn" id="to-types">← もどる</button>
+                <h2 id="current-type-title" class="modal-title">ブキ一覧</h2>
+            </div>
+            <div class="batch-controls">
+                <button id="all-on" class="batch-btn on">すべてON</button>
+                <button id="all-off" class="batch-btn off">すべてOFF</button>
+            </div>
+            <div class="weapon-scroll-list" id="weapon-list"></div>
+        </div>
+
+        <div id="view-gear-config" class="view hidden modal-bg">
+            <div class="modal-header">
+                <button class="return-btn" id="gear-to-main">← もどる</button>
+                <h2 class="modal-title">ギアパワー管理</h2>
+            </div>
+            <div class="batch-controls">
+                <button id="gear-all-on" class="batch-btn on">すべてON</button>
+                <button id="gear-all-off" class="batch-btn off">すべてOFF</button>
+            </div>
+            <div class="weapon-scroll-list" id="gear-list"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
